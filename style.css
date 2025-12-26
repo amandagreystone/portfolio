@@ -1,5 +1,7 @@
 body {
-  font-family: Calibri, sans-serif;
+ background-color: #DFFAF0;
+    color: #333333;
+    font-family: Calibri, Arial, Helvetica, sans-serif;
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
