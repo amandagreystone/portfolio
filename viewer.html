@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Viewer</title>
+    <style>
+        /* 1. Base Page Styles */
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            height: 100%; 
+            overflow: hidden; 
+            background-color: #525659; 
+        }
+
+        /* 2. The PDF Container */
+        iframe { 
+            width: 100%; 
+            height: 100vh; 
+            border: none; 
+            display: block; 
+            position: relative; 
+            z-index: 2; 
+        }
+        
+        /* 3. Navigation Button */
+        .back-btn { 
+            position: fixed; 
+            top: 15px; 
+            left: 15px; 
+            z-index: 100;
+            background: #222; 
+            color: white; 
+            padding: 10px 20px; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            font-family: sans-serif;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            transition: background 0.2s;
+        }
+
+        .back-btn:hover {
+            background: #444;
+        }
+
+        /* 4. Loading Animation */
+        #loader {
+            position: fixed; 
+            top: 50%; 
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center; 
+            color: white; 
+            font-family: sans-serif;
+            z-index: 1;
+        }
+
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            width: 40px; 
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-btn">← Back to Portfolio</a>
+
+    <div id="loader">
+        <div class="spinner"></div>
+        <p>Loading Document...</p>
+    </div>
+    
+    <script>
+        // Get the filename from the URL (e.g., ?file=my-case-study.pdf)
+        const urlParams = new URLSearchParams(window.location.search);
+        const fileName = urlParams.get('file');
+        
+        
+        const username = "amandagreystone";
+        const repo = "portfolio";
+        // --- END CONFIGURATION ---
+
+        const repoUrl = `https://${username}.github.io/${repo}/pdfs/`;
+        
+        if (fileName) {
+            // This is the PDF.js web viewer hosted by Mozilla
+            const pdfJsViewer = "https://mozilla.github.io/pdf.js/web/viewer.html";
+            const fullPath = `${pdfJsViewer}?file=${encodeURIComponent(repoUrl + fileName)}#pagemode=none&view=FitH`;
+
+            // Create the iframe
+            const iframe = document.createElement('iframe');
+            iframe.src = fullPath;
+            
+            // Once the iframe content begins to load, hide the spinner
+            iframe.onload = function() {
+                document.getElementById('loader').style.display = 'none';
+            };
+            
+            document.body.appendChild(iframe);
+        } else {
+            // Error handling if someone visits viewer.html without a ?file= parameter
+            document.getElementById('loader').innerHTML = `
+                <div style="padding: 20px;">
+                    <h1>No Document Selected</h1>
+                    <p>Please return to the <a href="index.html" style="color: white;">Portfolio</a> and select a file.</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
