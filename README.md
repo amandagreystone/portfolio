@@ -6,7 +6,7 @@ You can view the live portfolio here: https://amandagreystone.github.io/portfoli
 ## Contact
 Email: [amanda.greystone@proton.me](mailto:amanda.greystone@proton.me)
 
-## About My Github Project
+## About My GitHub Project
 
 **Work Management Tool for Collaboration and Planning**
 
