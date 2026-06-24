@@ -49,7 +49,3 @@ This project showcases a realistic Version 1 work management system that reflect
 
 Beyond the system itself, this project demonstrates the product thinking behind it. It shows how the backlog was planned and organized, how features and epics were defined, and how work was prioritized and structured into sprints. It reflects the approach a product manager takes to design a tool that supports team productivity, creates clarity, and enables effective decision-making.
 
-This project showcases a realistic Version 1 work management system that reflects how teams plan, organize, and track work. Users can create and manage tasks, structure and prioritize backlogs, collaborate with team members, and monitor progress across projects and sprints.
-
-Beyond the system itself, this project demonstrates the product thinking behind it. It shows how the backlog was planned and organized, how features and epics were defined, and how work was prioritized and structured into sprints. It reflects the approach a product manager takes to design a tool that supports team productivity, creates clarity, and enables effective decision-making.
-
